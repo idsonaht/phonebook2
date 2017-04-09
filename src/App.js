@@ -4,24 +4,16 @@ import AddPerson from './components/addPerson';
 import logo from './assets/logo.png';
 import './App.css';
 
-// var Hapi = require('hapi');
-// var mongoose = require("mongoose");
-//
-// var server = new Hapi.Server();
-// server.connection({ port: 3000 });
-
-
-// mongoose.connect('mongodb://localhost/test');
-
 class App extends Component {
   constructor(){
     super();
+    console.log(name);
     this.state = {
       phonebook: []
     }
   }
 
-//Fetch from api
+  //Fetch from api
   componentWillMount(){
 
   }
@@ -31,15 +23,17 @@ class App extends Component {
         {
           firstName : 'Thanos',
           lastName : 'Di',
+          email : 'thanosdi@live.com',
           phone : '6978791291',
           address : 'Smirnis 140',
           city : 'Athens',
           country : 'Greece',
-          group: 'Work'
+          group: 'Friends'
         },
         {
           firstName : 'Thanos2',
           lastName : 'Di',
+          email : 'thanosdi2@live.com',
           phone : '6978791291',
           address : 'Smirnis 140',
           city : 'Athens',
@@ -49,11 +43,12 @@ class App extends Component {
         {
           firstName : 'Thanos3 ',
           lastName : 'Di',
+          email : 'thanosdi3@live.com',
           phone : '6978791291',
           address : 'Smirnis 140',
           city : 'Athens',
           country : 'Greece',
-          group: 'Work'
+          group: 'Family'
         }
       ]});
   }
@@ -71,19 +66,20 @@ class App extends Component {
 
   handleDeletePerson(id){
     let phonebook = this.state.phonebook;
-    let index = phonebook.findIndex(x => x.id === id);
+    let index = phonebook.findIndex(x => x.email === id);
+    console.log(index);
     phonebook.splice(index, 1);
     this.setState({phonebook:phonebook});
-
   }
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
+      <div className="App row">
+        <h2>PhoneBook Application</h2>
+        <div className="App-header col-sm-12">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <AddPerson addPerson={this.handleAddPerson.bind(this)}/>
+        <AddPerson addPerson={this.handleAddPerson.bind(this)} />
         <br/>
         <PhoneBook phonebook={this.state.phonebook} onDelete={this.handleDeletePerson.bind(this)}/>
       </div>

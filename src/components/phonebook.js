@@ -3,7 +3,6 @@ import Person from './person';
 class PhoneBook extends Component {
   deletePerson(id){
     this.props.onDelete(id)
-
   }
 
   render() {
@@ -11,13 +10,16 @@ class PhoneBook extends Component {
     if(this.props.phonebook){
       persons = this.props.phonebook.map(person =>{
         return (
-          <Person onDelete={this.deletePerson.bind(this)} key={person.firstName} person={person} />
+          <Person onDelete={this.deletePerson.bind(this)} key={person.email} person={person} />
         );
       });
     }
     return (
-      <div className="PhoneBook">
-      {persons}
+      <div className="PhoneBook col-md-offset-2 col-md-6">
+        <h3 className="margin-bottom-35">View Contacts</h3>
+        <ul className="list-group">
+          {persons}
+        </ul>
       </div>
     );
   }

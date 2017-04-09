@@ -9,7 +9,7 @@ class AddPerson extends Component {
   }
 
   static defaultProps = {
-    group: ['Friend', 'Work', 'Family', 'Other']
+    group: ['Friends', 'Work', 'Family', 'Other']
   }
 
   /* Submit Handler */
@@ -32,7 +32,6 @@ class AddPerson extends Component {
         this.setState({
           newPerson
         }, function(){
-          // console.log(this.state);
           this.props.addPerson(this.state.newPerson);
         });
     }
@@ -45,40 +44,52 @@ class AddPerson extends Component {
     });
 
     return (
-      <div>
+      <div className="col-md-4">
         <h3>Add Person</h3>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <div>
-            <label>First Name *</label> <br />
-            <input type="text" ref="firstName" /> <br />
+          <div className="form-group row">
+            <i className="glyphicon glyphicon-user"></i>
+            <label>First Name *</label>
+            <input type="text" ref="firstName" className="form-control" placeholder="Sherlock" required/>
           </div>
-          <div>
-            <label>Last Name *</label> <br />
-            <input type="text" ref="lastName" /> <br />
+          <div className="form-group row">
+            <i className="glyphicon glyphicon-user"></i>
+            <label>Last Name *</label>
+            <input type="text" ref="lastName" className="form-control" placeholder="Holmes" required/>
           </div>
-          <div>
-            <label>Phone *</label> <br />
-            <input type="text" ref="phone" /> <br />
+          <div className="form-group row">
+            <i className="glyphicon glyphicon-envelope"></i>
+            <label>Email *</label>
+            <input type="email" ref="email" className="form-control" placeholder="thanosdi@live.com" required/>
           </div>
-          <div>
-            <label>Address *</label> <br />
-            <input type="text" ref="address" /> <br />
+          <div className="form-group row">
+            <i className="glyphicon glyphicon-earphone"></i>
+            <label>Phone *</label>
+            <input type="text" ref="phone" className="form-control" placeholder="+447712345678" required/>
           </div>
-          <div>
-            <label>City *</label> <br />
-            <input type="text" ref="city" /> <br />
+          <div className="form-group row">
+            <i className="glyphicon glyphicon-road"></i>
+            <label>Address *</label>
+            <input type="text" ref="address" className="form-control" placeholder="221B Baker Steet" required/>
           </div>
-          <div>
-            <label>Country *</label> <br />
-            <input type="text" ref="country" /> <br />
+          <div className="form-group row">
+            <i className="glyphicon glyphicon-home"></i>
+            <label>City *</label>
+            <input type="text" ref="city" className="form-control" placeholder="London" required/>
           </div>
-          <div>
-            <label>Group *</label> <br />
-            <select ref="groups">
+          <div className="form-group row">
+            <i className="glyphicon glyphicon-globe"></i>
+            <label>Country *</label>
+            <input type="text" ref="country" className="form-control" placeholder="England" required/>
+          </div>
+          <div className="form-group row">
+            <i className="glyphicon glyphicon-group"></i>
+            <label>Group *</label>
+            <select ref="group" className="form-control">
               {groupOptions}
             </select>
-          </div> <br />
-          <input type="submit" value="Submit" />
+          </div>
+          <input type="submit" value="Submit" className="btn btn-default" />
         </form>
       </div>
     );
